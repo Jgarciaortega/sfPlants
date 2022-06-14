@@ -1,0 +1,16 @@
+<template>
+  <div class="slds-align_absolute-center">
+    <template if:true={species.data}>
+      <div class="slds-grid slds-wrap  slds-grid_align-center">
+        <template for:each={species.data} for:item="specie">
+          <div key={specie.Name} class="slds-col">
+            <c-species-tile
+              specie={specie}
+              class="slds-col slds-var-m-around_small"
+            ></c-species-tile>
+          </div>
+        </template>
+      </div>
+    </template>
+  </div>
+</template>
