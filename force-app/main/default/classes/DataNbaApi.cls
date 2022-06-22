@@ -1,6 +1,7 @@
 public with sharing class DataNbaApi {
     
     static final String KEY = 'ebaac09cc9a64f3f942c06b37ae7fc19';
+
     @AuraEnabled(cacheable=true)
     public static List<Team> GetTeams() {
         
@@ -8,32 +9,44 @@ public with sharing class DataNbaApi {
         req.setEndpoint('callout:API_NBA/v3/nba/scores/json/teams?key=' + KEY);
         req.setMethod('GET');
 
-        system.debug('ENDPOING -> ' + req.getEndpoint());
         Http http = new Http();
         HTTPResponse res = http.send(req);
         String body = res.getBody();
 
         List<Team>  teams = (List<Team> )JSON.deserialize(body, List<Team>.class);
-        system.debug('BEFORE SORT...');
-        for(Team p : teams){
-            system.debug(p.Name);
-        }
-        
         teams.sort();
-        system.debug('AFTER SORT...');
-        for(Team p : teams){
-            system.debug(p.Name);
-        }
+   
         return teams;
     }
 
+    @AuraEnabled(cacheable=true)
+    public static List<Stadium> GetAllStadiums(){
+
+        HttpRequest req = new HttpRequest();
+        req.setEndpoint('callout:API_NBA/v3/nba/scores/json/Stadiums?key=' + KEY);
+        req.setMethod('GET');
+
+        Http http = new Http();
+        HTTPResponse res = http.send(req);
+        String body = res.getBody();
+
+        List<Stadium> stadiums = (List<Stadium>) JSON.deserialize(body, List<Stadium>.class );
+
+        for(Stadium p : stadiums){
+            system.debug(p.Name);
+        }
+
+        return stadiums;
+
+    }
+    
+    @AuraEnabled(cacheable=true)
     public static List<Player> GetPlayersByTeam(String team){
 
         HttpRequest req = new HttpRequest();
         req.setEndpoint('callout:API_NBA/v3/nba/scores/json/Players/' + team + '?key=' + KEY);
         req.setMethod('GET');
 
-        system.debug('ENDPOING -> ' + req.getEndpoint());
         Http http = new Http();
         HTTPResponse res = http.send(req);
         String body = res.getBody();
@@ -41,6 +54,27 @@ public with sharing class DataNbaApi {
         List<Player> players = (List<Player>)JSON.deserialize(body, List<Player>.class);
 
         return players;
+    }
+
+    public class Stadium{
+        @auraEnabled
+        public Integer StadiumID;
+        @auraEnabled
+        public String Name;
+        @auraEnabled
+        public String Address;
+        @auraEnabled
+        public String City;
+        @auraEnabled
+        public String State;
+        @auraEnabled
+        public String Country;
+        @auraEnabled
+        public Integer Capacity;
+        @auraEnabled
+        public String GeoLat;
+        @auraEnabled
+        public String GeoLong;
     }
 
     public class Player{

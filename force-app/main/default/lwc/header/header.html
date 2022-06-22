@@ -3,25 +3,32 @@
     <div class="slds-page-header__row">
       <div class="slds-page-header__col-title">
         <div class="slds-grid">
-            <div class="slds-col slds-size_1-of-6 img">
-            <img
-              src="https://upload.wikimedia.org/wikipedia/en/0/02/Washington_Wizards_logo.svg"
-            />
+          <div class="slds-col slds-size_1-of-6 img">
+            <template if:true={team}>
+              <img src={team.img} />
+            </template>
           </div>
           <div class="slds-col slds-size_3-of-6">
             <div class="slds-page-header__name">
               <div class="slds-page-header__name-title">
-                <h1>
-                  <span
-                    class="slds-page-header__title slds-truncate"
-                    title="Rohde Corp - 80,000 Widgets"
-                    >{nameTeam}</span
-                  >
-                </h1>
+                <template if:true={team}>
+                  <h1>
+                    <span
+                      class="slds-page-header__title slds-truncate"
+                      title={team.label}
+                      >{team.label}</span
+                    >
+                  </h1>
+                  <p><span>CONFERENCE: </span>{team.conference}</p>
+                  <p><span>DIVISION: </span>{team.division}</p>
+                </template>
               </div>
             </div>
           </div>
-          <c-picklist-teams class="slds-col slds-size_2-of-6" onchange={nextHandler}></c-picklist-teams>
+          <c-picklist-header
+            teams={teams}
+            onteamselected={teamSelected}
+          ></c-picklist-header>
         </div>
       </div>
     </div>

@@ -1,13 +1,20 @@
-import { LightningElement } from 'lwc';
+import { LightningElement , api } from 'lwc';
 
 
 export default class Header extends LightningElement {
 
-   nameTeam;
+   @api teams;
+   @api team;
 
-    nextHandler(evt){
-        this.nameTeam = evt.detail.value;
-    }
-    
+   teamSelected(ev){
+
+      let evt = new CustomEvent('teamselected', {
+         detail: ev.detail
+     })
+
+     this.dispatchEvent(evt);
+   }
+
+
 
 }

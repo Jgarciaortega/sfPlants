@@ -1,0 +1,18 @@
+<template>
+    <select onchange={teamSelected}>
+        <template for:each={teams} for:item="t">
+          <option value={t.value} key={t.value} title={t.label} >{t.label}</option>
+        </template>
+      </select>
+</template> 
+
+<!-- <template>
+  <lightning-combobox
+    name="combobox team"
+    label={label}
+    placeholder="Choose Team"
+    onchange={teamSelected}
+    options={teams}
+  >
+  </lightning-combobox>
+</template> -->

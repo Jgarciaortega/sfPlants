@@ -1,0 +1,57 @@
+<!-- <template>
+  <div class="wrapper">
+    <header class="header">
+      <c-header teams={teams} team={team} onteamselected={getTeamByName} > </c-header>
+    </header>
+    <section class="content">
+      <div class="columns">
+        <main class="main">
+          <c-stadium stadium={stadium} mapmarkers={mapmarkers}></c-stadium>
+          <c-list-players players={players} onhandleplayerclick={getPlayerById}></c-list-players>
+        </main>
+        <aside class="sidebar-second"></aside>
+      </div>
+    </section>
+  </div>
+</template> -->
+
+<template>
+  <div class="c-container">
+    <lightning-layout multiple-rows="true">
+      <lightning-layout-item padding="around-small" size="12">
+        <div class="page-section page-header">
+          <c-header teams={teams} team={team} onteamselected={getTeamByName}>
+          </c-header>
+        </div>
+      </lightning-layout-item>
+      <lightning-layout-item padding="around-small" size="12">
+        <lightning-layout>
+          <lightning-layout-item padding="around-small" size="9">
+            <div class="page-section page-main">
+              <c-list-players
+                players={players}
+                onhandleplayerclick={getPlayerById}
+              ></c-list-players>
+            </div>
+          </lightning-layout-item>
+          <lightning-layout-item padding="around-small" size="3">
+            <template if:true={player}>
+              <div class="page-section page-right">
+                <c-player-detail player={player}></c-player-detail>
+              </div>
+            </template>
+          </lightning-layout-item>
+        </lightning-layout>
+      </lightning-layout-item>
+      <lightning-layout-item
+        flexibility="auto"
+        padding="around-small"
+        size="12"
+      >
+        <div class="page-footer page-section">
+          <c-stadium stadium={stadium} mapmarkers={mapmarkers}></c-stadium>
+        </div>
+      </lightning-layout-item>
+    </lightning-layout>
+  </div>
+</template>
