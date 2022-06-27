@@ -3,6 +3,7 @@ import { LightningElement , api } from 'lwc';
 export default class ListPlayers extends LightningElement {
 
     @api players;
+    @api team;
 
     handlePlayerClick(ev){
         const event = new CustomEvent('handleplayerclick', {

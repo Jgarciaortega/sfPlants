@@ -45,7 +45,10 @@ export default class App extends LightningElement {
                 img: cls.WikipediaLogoUrl,
                 conference: cls.Conference,
                 division: cls.Division,
-                stadiumId: cls.StadiumID
+                stadiumId: cls.StadiumID,
+                primary_color: cls.PrimaryColor,
+                secondary_color: cls.SecondaryColor,
+                terciary_color: cls.TertiaryColor,
 
             }));
         } else if (error) {
@@ -59,6 +62,7 @@ export default class App extends LightningElement {
         this.getStadiumById(this.team.stadiumId);
         this.setPlayers();
         this.setMapMarkers();
+        this.player = '';
 
     }
 
@@ -77,7 +81,7 @@ export default class App extends LightningElement {
                 location: {
                     Latitude: this.stadium.geoLat,
                     Longitude: this.stadium.geoLong
-                },
+                }    
             },
         ];
     }
@@ -109,7 +113,6 @@ export default class App extends LightningElement {
                     yahooName: cls.YahooName
 
                 }));
-                console.log(this.players)
             })
             .catch((error) => {
                 this.error = error;

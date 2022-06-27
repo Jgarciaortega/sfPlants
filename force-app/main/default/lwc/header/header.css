@@ -1,3 +1,12 @@
-.img img{
-    max-width: 30%;
+.logo_team{
+    display: flex;
+    justify-content: center;        
+}
+
+.logo_team img{
+    max-width: 63px;
+}
+
+.nba{
+    background-color: #01579B;
 }

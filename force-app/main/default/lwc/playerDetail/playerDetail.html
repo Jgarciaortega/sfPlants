@@ -1,37 +1,39 @@
 <template>
   <article class="slds-card">
-    <div class="slds-card__header">
-      <header class="slds-media slds-media_center slds-has-flexi-truncate">
-        <div class="slds-media__body">
-          <h2 class="slds-card__header-title">
-            <span>{player.title}</span>
-          </h2>
-        </div>
-      </header>
-      <div class="slds-grid slds-wrap">
-        <div class="slds-col slds-size_1-of-1">
-          <img
-            src={player.photoUrl}
-            alt={player.title}
-            class="slds-align_absolute-center"
-          />
-        </div>
-        <div class="slds-col slds-size_1-of-1">
-          <p>{player.position}</p>
-          <p>{player.positionC}</p>
-          <p>{player.height}</p>
-          <p>{player.weight}</p>
-          <p>{player.bithDate}</p>
-          <p>{player.birthCity}</p>
-          <p>{player.birthState}</p>
-          <p>{player.birthCountry}</p>
-          <p>{player.highSchool}</p>
-          <p>{player.college}</p>
-          <p>{player.salary}</p>
-          <p>{player.experience}</p>
-          <p>{player.draftKingsName}</p>
+    <template if:true={player}>
+      <div class="slds-card__header">
+        <header class="slds-media slds-media_center slds-has-flexi-truncate">
+          <div class="slds-media__body">
+            <h2 class="slds-card__header-title">
+              <span>{player.title}</span>
+            </h2>
+          </div>
+        </header>
+        <div class="slds-grid slds-wrap">
+          <div class="slds-col slds-size_1-of-1">
+            <img
+              src={player.photoUrl}
+              alt={player.title}
+              class="slds-align_absolute-center"
+            />
+          </div>
+          <div class="slds-col slds-size_1-of-1 slds-box">
+            <ul>
+              <li>HEIGHT: {player.height}</li>
+              <li>WEIGHT: {player.weight}</li>
+              <li>POSITION: {player.position}</li>
+              <li>BIRTHDATE: {birthDate}</li>
+              <li>BIRTHCITY: {player.birthCity}</li>
+              <li>BIRTHSTATE: {player.birthState}</li>
+              <li>BIRTHCOUNTRY: {player.birthCountry}</li>
+              <li>HIGHSCHOOL: {player.highSchool}</li>
+              <li>COLLEGE: {player.college}</li>
+              <li>SALARY: {salary}</li>
+              <li>EXPERIENCE: {player.experience}</li>
+            </ul>
+          </div>
         </div>
       </div>
-    </div>
+    </template>
   </article>
 </template>

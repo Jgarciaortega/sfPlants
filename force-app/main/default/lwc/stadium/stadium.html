@@ -1,22 +1,25 @@
 <template>
-  <div class="slds-card">
-    <div class="slds-grid slds-gutters">
-      <template if:true={stadium}>
+  <template if:true={stadium}>
+    <div class="slds-card">
+      <div class="slds-grid slds-gutters">
         <div class="slds-col">
+          <h1>
+            <span class="slds-page-header__title slds-truncate title" title="STADIUM">STADIUM</span>
+          </h1>
           <ul>
-            <li><span>NAME: </span>{stadium.name}</li>
-            <li><span>ADDRESS: </span>{stadium.address}</li>
-            <li><span>CITY: </span>{stadium.city}</li>
-            <li><span>STATE: </span>{stadium.state}</li>
-            <li><span>COUNTRY: </span>{stadium.country}</li>
-            <li><span>CAPACITY: </span>{stadium.capacity}</li>
+            <li>NAME: {stadium.name}</li>
+            <li>ADDRESS: {stadium.address}</li>
+            <li>CITY: {stadium.city}</li>
+            <li>STATE: {stadium.state}</li>
+            <li>COUNTRY: {stadium.country}</li>
+            <li>CAPACITY:{stadium.capacity}</li>
           </ul>
         </div>
-        <div class="slds-col slds-box">
+        <div class="slds-col map">
           <lightning-map map-markers={mapmarkers} zoom-level={zoomLevel}>
           </lightning-map>
         </div>
-      </template>
+      </div>
     </div>
-  </div>
+  </template>
 </template>

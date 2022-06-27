@@ -1,36 +1,77 @@
 <template>
-  <div class="slds-page-header">
-    <div class="slds-page-header__row">
-      <div class="slds-page-header__col-title">
-        <div class="slds-grid">
-          <div class="slds-col slds-size_1-of-6 img">
-            <template if:true={team}>
+  <template if:true={team}>
+    <div class="slds-page-header" style={primaryColor}>
+      <div class="slds-page-header__row">
+        <div class="slds-page-header__col-title">
+          <div class="slds-grid">
+            <div class="slds-col slds-size_1-of-12 logo_team">
               <img src={team.img} />
-            </template>
-          </div>
-          <div class="slds-col slds-size_3-of-6">
-            <div class="slds-page-header__name">
-              <div class="slds-page-header__name-title">
-                <template if:true={team}>
-                  <h1>
-                    <span
-                      class="slds-page-header__title slds-truncate"
-                      title={team.label}
-                      >{team.label}</span
-                    >
-                  </h1>
-                  <p><span>CONFERENCE: </span>{team.conference}</p>
-                  <p><span>DIVISION: </span>{team.division}</p>
-                </template>
+            </div>
+            <div class="slds-col slds-size_8-of-12">
+              <div class="slds-page-header__name">
+                <div class="slds-page-header__name-title">
+                  <template if:true={team}>
+                    <h1>
+                      <span
+                        class="slds-page-header__title slds-truncate"
+                        title={team.label}
+                        style={fontSecondaryColor}
+                        >{team.label}</span
+                      >
+                    </h1>
+                    <ul>
+                      <li style={fontSecondaryColor}>
+                        CONFERENCE: {team.conference}
+                      </li>
+                      <li style={fontSecondaryColor}>
+                        DIVISION: {team.division}
+                      </li>
+                    </ul>
+                    <!-- <p><span  style={fontTerciayColor}>: </span></p>
+                    <p><span  style={fontTerciayColor}>: </span></p> -->
+                  </template>
+                </div>
               </div>
             </div>
+            <c-picklist-header
+              class="slds-col slds-size_3-of-12"
+              teams={teams}
+              onteamselected={teamSelected}
+            ></c-picklist-header>
           </div>
-          <c-picklist-header
-            teams={teams}
-            onteamselected={teamSelected}
-          ></c-picklist-header>
         </div>
       </div>
     </div>
-  </div>
+  </template>
+  <template if:false={team}>
+    <div class="nba slds-page-header">
+      <div class="slds-page-header__row">
+        <div class="slds-page-header__col-title">
+          <div class="slds-grid">
+            <div class="slds-col slds-size_1-of-12 logo_team">
+              <img src={nba_logo} />
+            </div>
+            <div class="slds-col slds-size_8-of-12">
+              <div class="slds-page-header__name">
+                <div class="slds-page-header__name-title">
+                  <h1>
+                    <span class="slds-page-header__title slds-truncate"
+                      >NO TEAM CHOSEN</span
+                    >
+                  </h1>
+                  <p>Please choose one</p>
+                </div>
+              </div>
+            </div>
+            <c-picklist-header
+              class="slds-col slds-size_3-of-12"
+              teams={teams}
+              onteamselected={teamSelected}
+            ></c-picklist-header>
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+  <template if:false={team}> </template>
 </template>

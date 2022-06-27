@@ -1,22 +1,5 @@
-<!-- <template>
-  <div class="wrapper">
-    <header class="header">
-      <c-header teams={teams} team={team} onteamselected={getTeamByName} > </c-header>
-    </header>
-    <section class="content">
-      <div class="columns">
-        <main class="main">
-          <c-stadium stadium={stadium} mapmarkers={mapmarkers}></c-stadium>
-          <c-list-players players={players} onhandleplayerclick={getPlayerById}></c-list-players>
-        </main>
-        <aside class="sidebar-second"></aside>
-      </div>
-    </section>
-  </div>
-</template> -->
-
 <template>
-  <div class="c-container">
+  <div class="c-container slds-box">
     <lightning-layout multiple-rows="true">
       <lightning-layout-item padding="around-small" size="12">
         <div class="page-section page-header">
@@ -31,6 +14,7 @@
               <c-list-players
                 players={players}
                 onhandleplayerclick={getPlayerById}
+                team={team}
               ></c-list-players>
             </div>
           </lightning-layout-item>
@@ -49,7 +33,17 @@
         size="12"
       >
         <div class="page-footer page-section">
-          <c-stadium stadium={stadium} mapmarkers={mapmarkers}></c-stadium>
+          <lightning-layout>
+            <lightning-layout-item padding="around-small" size="9">
+              <template if:true={team}>
+                <c-stadium
+                  stadium={stadium}
+                  mapmarkers={mapmarkers}
+                  team={team}
+                ></c-stadium>
+              </template>
+            </lightning-layout-item>
+          </lightning-layout>
         </div>
       </lightning-layout-item>
     </lightning-layout>
