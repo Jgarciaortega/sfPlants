@@ -122,6 +122,13 @@ export default class App extends LightningElement {
 
     }
 
+    get borderTeam(){
+        if(this.team != null){
+            return `border:3px ridge #${this.team.secondary_color}` 
+        }
+       return '';
+    }
+
 
 
 

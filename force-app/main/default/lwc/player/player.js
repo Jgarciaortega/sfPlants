@@ -26,4 +26,5 @@ export default class Player extends LightningElement {
     get terciayColor() {
         return `background-color:#${this.team.terciary_color}`
     }
+
 }

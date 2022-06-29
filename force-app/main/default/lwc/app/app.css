@@ -1,0 +1,10 @@
+
+
+.effectShadow{
+    margin: auto;
+    border: 3px ridge black;
+    box-shadow: 5px 5px 5px rgb(95, 94, 94);
+    margin-bottom: 5%;
+    position: relative;
+    
+}

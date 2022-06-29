@@ -1,11 +1,8 @@
+@import 'c/nbaStyle';
+
 .map{
     margin: 2%;
-    border-top: 1px solid #444;
-    border-right: 1px solid #333;
-    border-bottom: 1px solid #000;
-    border-left: 1px solid #333;
-    background: #222;
-   
+    margin-right: 4%;
 }
 
 ul{

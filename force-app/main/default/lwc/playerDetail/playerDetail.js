@@ -23,7 +23,6 @@ export default class PlayerDetail extends LightningElement {
         
         return salary;
     }
-    
 
 
 }
